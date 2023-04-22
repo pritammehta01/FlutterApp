@@ -67,6 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         TextFormField(
                           decoration: InputDecoration(
+                              border: OutlineInputBorder(),
                               hintText: " Enter UserName",
                               labelText: "UserName"),
                           validator: (value) {
@@ -80,11 +81,16 @@ class _LoginPageState extends State<LoginPage> {
                             setState(() {});
                           },
                         ),
+                        SizedBox(
+                          height: 16,
+                        ),
                         TextFormField(
                           keyboardType: TextInputType.number,
                           obscureText: true,
                           decoration: InputDecoration(
-                              hintText: " Enter Pasword", labelText: "Pasword"),
+                              border: OutlineInputBorder(),
+                              hintText: " Enter Pasword",
+                              labelText: "Pasword"),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "pasword can't be empty";
