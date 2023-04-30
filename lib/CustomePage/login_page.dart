@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/CustomePage/home_page.dart';
+import 'package:my_app/widgets/splash_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,11 +17,16 @@ class _LoginPageState extends State<LoginPage> {
   bool isEmpty = true;
   final _formkey = GlobalKey<FormState>();
   moveToHome(BuildContext context) async {
+    //If sucsessful Login
+    var sharedPrefs = await SharedPreferences.getInstance();
+    sharedPrefs.setBool(SplashScreenState.KEYLOGIN, true);
     if (_formkey.currentState!.validate()) {
       setState(() {
         chanchedButton = true;
       });
       await Future.delayed(Duration(seconds: 1));
+      var sharedPrefs = await SharedPreferences.getInstance();
+      sharedPrefs.setBool(SplashScreenState.KEYLOGIN, true);
       await Navigator.pushReplacement(
           context,
           MaterialPageRoute(
